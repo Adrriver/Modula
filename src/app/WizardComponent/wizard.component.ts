@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Validators, FormGroup, FormControl, FormArray, FormBuilder, NG_VALIDATORS } from '@angular/forms';
 import { Wizard, Module, QAndA } from '../WizardInterface/wizard.interface';
-import { MemberService } from '../member-service.service';
+import { MemberService } from '../MemberService/member-service.service';
 import { Teacher } from '../Teacher/teacher';
 import { Validator } from '../Validator/validator.directive';
 import { ReactiveFormsModule } from '@angular/forms';

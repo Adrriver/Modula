@@ -1,5 +1,6 @@
 <div>
 <h3 class="jumbotron">Top Students</h3>
+  <ul>
 <li class="grid grid-pad">
   <li *ngFor="let student of students" (click)="gotoDetail(student)"
       [class.selected] = "student === selectedStudent">

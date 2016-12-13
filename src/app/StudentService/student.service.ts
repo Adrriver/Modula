@@ -6,14 +6,14 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/map';
 import { Student } from '../Student/student';
-import { MemberService } from '../member-service.service';
+import { MemberService } from '../MemberService/member-service.service';
 import { ModulePerformanceService } from '../ModulePerformanceService/module-performance.service';
 import { ModulePerformance } from '../ModulePerformance/module-performance';
 
 
 @Injectable()
 export class StudentService {
-	
+
 	public req_url:String = '../../php_services';
 	public students:Observable<Student[]>; // Store as observable of Student?
 	private students_bxs: BehaviorSubject<Student[]>;
@@ -24,8 +24,8 @@ export class StudentService {
 	public modsPerf:ModulePerformance[];
 
 
-	constructor(private http:Http, private memberService:MemberService, 
-				private modsPerfService:ModulePerformanceService){ 
+	constructor(private http:Http, private memberService:MemberService,
+				private modsPerfService:ModulePerformanceService){
 				this.getModulesPerformance();
 				modsPerfService.modulesPerformance.map( mp =>  this.modsPerf = mp);
 				this.persistedStudents = { students: [] };
@@ -39,28 +39,28 @@ export class StudentService {
 
 	loadStudents(): void {
 		http.get('this.req_url' + '/getStudents' ).map(res => res.json())
-				.subscribe( students => { 
+				.subscribe( students => {
 					students.forEach((student, index) => {this.createStudent(student).subscribe( student => { this.persistedStudents.students[index] = student;})});
 						this.students_bxs.next(Object.assign({}, this.persistedStudents).students);
-				}, error => console.log("loadStudents failed."));		
+				}, error => console.log("loadStudents failed."));
 	}
 
-	getStudents(): Observable<Student[]> {        	
+	getStudents(): Observable<Student[]> {
  		return this.students;
-	}	  
-    
+	}
+
     getStudent(id: String): Observable<Student> {
      	return this.getStudents().map(students => students.find(student => student.username === id));
-     	
+
      }
-    
-	public createStudent(student): Observable<Student>{		
+
+	public createStudent(student): Observable<Student>{
 		// let mp = this.modsPerfService.modulesPerformance;
 		 let allModsPerf;
 		 this.modsPerfService.getStudentPerformance(student.username).subscribe( modsPerf => {
 		 	allModsPerf = modsPerf;});
-		 
-  	
+
+
 			let student_ = new Student(student, allModsPerf);
 			return Observable.of(student_);
 	}

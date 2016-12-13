@@ -3,7 +3,7 @@
     import { Student } from '../Student/student';
     import { StudentService } from '../StudentService/student.service';
     import { Router } from '@angular/router';
-    import '../rxjs-extensions'
+
     //import { Location } from ''
 
     @Component({

@@ -6,7 +6,7 @@ import { StudentService } from '../StudentService/student.service';
 import { ModulePerformance } from '../ModulePerformance/module-performance';
 import { ModulePerformanceService } from '../ModulePerformanceService/module-performance.service';
 import { Module } from '../Module/module';
-import { MemberService } from '../member-service.service';
+import { MemberService } from '../MemberService/member-service.service';
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
 

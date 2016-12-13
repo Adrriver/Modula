@@ -2,18 +2,18 @@
  * adapted from JSON to PHP backend
  */
 
- import { Injectable } from '@angular/core';
- import { Http, Response } from '@angular/http';
- import { Observable } from 'rxjs/Observable';
- import 'rxjs/add/operator/share';
- import 'rxjs/add/operator/map';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Module } from '..//Module/module';
-import { ModulePerformance } from '..//ModulePerformance/module-performance';
-import { ModulePerformanceService } from '..//ModulePerformanceService/module-performance.service';
-import { Teacher } from '..//Teacher/teacher';
-import { Student } from '..//Student/student';
+import { ModulePerformance } from '../ModulePerformance/module-performance';
+import { ModulePerformanceService } from '../ModulePerformanceService/module-performance.service';
+import { Teacher } from '../Teacher/teacher';
+import { Student } from '../Student/student';
 
 
 

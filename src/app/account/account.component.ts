@@ -5,7 +5,7 @@ import { SessionService } from '../SessionService/session.service';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { MemberService } from '../member-service.service';
+import { MemberService } from '../MemberService/member-service.service';
 import { Student } from '../Student/student';
 import { Teacher } from '../Teacher/teacher';
 import { Directive, forwardRef } from '@angular/core';
