@@ -1,0 +1,116 @@
+<!-- Wizard question-set creator-->
+<div class="container">
+	<h4>Add Question</h4>
+	<form [formGroup]="wizardForm" novalidate (ngSubmit)="save(
+		wizardForm.value)">
+		<div class="form-group">
+			<label>Track Name</label>
+			<input type="text" formControlName="gameName">
+				<small *ngIf="!wizardForm.cont.gameName.valid" class="text-danger">
+					Give your game a name.
+				</small>
+		<label>Teacher Name: {{teacher}}</label>
+		<label>Class:</label>
+		<input type="text" formControlName="class">
+			<small *ngIf="!wizardForm.controls.class.valid" class="text-danger">Enter class name</small>
+		<label>Date:</label>
+		<input type="text" formControlName="dateCreated" value={{date | date}}>
+			<small *ngIf="!wizardForm.cont.dateCreated.valid" class="text-danger">Don't forget to date it!
+			</small>
+		</div>
+		<div class="form-group">
+			<label>Keywords</label>
+			<input type="text" formControlName="keywords" value="e.g., Math">
+				<small *ngIf="!wizardForm.cont.keywords.valid" class="text-danger">Enter at least one keyword
+				</small>
+				<label>Grade</label>
+				<input type="text" formControlName="grade">
+					<small *ngIf="!wizardForm.cont.grade.valid" class="text-danger">Enter a grade
+					</small>
+				</div>
+				<!--List modules-->
+				<div formArrayName="modules">
+					<div *ngFor="let module of wizardForm.cont.modules.controls; let i = index">
+						<div>
+							<span>Module {{i + 1}}</span>
+							<span *ngIf="wizardForm.cont.modules.cont.length > 1"
+								(click)="removeModule(i)">
+							</span>
+						</div>
+
+						<div [formGroupName]="i">
+							<div>
+								<label>Level Name:</label>
+								<input type="text" formControlName="modName">
+								<small [hidden]="wizardForm.cont.modules.cont[i].cont.modName.valid" class="text-danger">
+									Module name required!</small>
+								<label>Number of questions:</label>
+								<input type="text" formControlName="questionCount">
+									<small [hidden]="wizardForm.cont.modules.cont[i].controls.questionCount.valid" class="text-danger">
+										How many questions in this module?</small>
+								<input type = "text" formControlName="difficulty">
+                  <small [hidden]="wizardForm.cont.modules.cont[i].cont.difficulty.valid" class="text-danger">
+                    Please use a value in the range 1-3</small>
+							</div>
+							<div formArrayName="questions">
+	<div *ngFor="let question of wizardForm.cont.questions.cont; let j = index">
+		<div>
+			<span>Question {{j + 1}}</span>
+			<span *ngIf="wizardForm.cont.modules[i].questions.cont[j].length > 1"
+				(click)="addQuestion(j)">
+			</span>
+		</div>
+
+		<div [formGroupName] = "j">
+
+			<div>
+				<label>Question # {{j}}</label>
+				<label>Correct Answer</label>
+				<input type="text" formControlName="qNum">
+					<small [hidden]="wizardForm.cont.modules[i].questions.cont[j].correctAnswer.valid">
+						Correct answer not indicated</small>
+			</div>
+			<div>
+				<label>Question:</label>
+				<input type="text" formControlName="question">
+					<small [hidden]="wizardForm.cont.modules.cont[i].questions.cont[j].question.valid">
+						Your question must be at least 10-characters-long</small>
+			</div>
+			<div>
+				<input type="text" formControlName="correct">
+					<small [hidden]="wizardForm.cont.modules.cont[i].question.cont[j].A.valid">
+						This answer is too short - Please rephrase</small>
+			</div>
+			<div>
+				<input type="text" formControlName="incorr_a">
+					<small [hidden]="wizardForm.cont.modules.cont[i].question.cont[j].B.valid">
+						This answer is too short - Please rephrase</small>
+			</div>
+			<div>
+				<input type="text" formControlName="incorr_b">
+					<small [hidden]="wizardForm.cont.modules.cont[i].question.cont[j].C.valid">
+						This answer is too short - Please rephrase</small>
+			</div>
+			<div>
+				<input type="text" formControlName="incorr_c">
+					<small [hidden]="wizardForm.cont.modules.cont[i].question.cont[j].D.valid">
+						This answer is too short - Please rephrase</small>
+			</div>
+		</div>
+	</div>
+</div>
+
+		</div>
+</div>
+</div>
+<!--list of module questions-->
+
+				<div>
+					<fieldset>
+						<legend></legend>
+							<input ng-change="submitNowToggle()" type="checkbox"/>Submit now!<br/>
+					</fieldset>}
+				</div>
+		<button type="submit" [disabled]="!wizardForm.valid">Create Game!</button>
+	</form>
+</div>

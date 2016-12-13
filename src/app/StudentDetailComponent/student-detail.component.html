@@ -1,0 +1,11 @@
+<div *ngIf='selectedStudent'>
+    <h2>{{student.firstName}} details!</h2>
+    <div><label>ID: </label>{{student.schoolId}}</div>
+    <div>
+        <label>First Name: </label>
+        <input [(ngModel)]="student.firstName" placeholder="Name"/>
+        </div>
+        <button (click)="goBack()">Back</button>
+    </div>
+
+<!--Implement full student profile for single-student view, which this page will serve to do -->

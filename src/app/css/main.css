@@ -1,0 +1,10 @@
+ul {
+  list-style-type: none;
+}
+.nav {
+  display: inline-flex;
+  position: relative;
+  float: right;
+  padding-right: 5em;
+  margin-left: 10em;
+}

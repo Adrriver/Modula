@@ -1,0 +1,16 @@
+<div>
+<h3 class="jumbotron">Top Students</h3>
+<li class="grid grid-pad">
+  <li *ngFor="let student of students" (click)="gotoDetail(student)"
+      [class.selected] = "student === selectedStudent">
+<span>{{student.firstName}}</span>
+<span>{{student.lastName}}</span>
+<span>{{student.email}}</span>
+<span>School ID:{{student.schoolId}}</span>
+
+class="col-1-4">
+    <div class="module student">
+      <h4>{{student.firstName}}</h4>
+    </div>
+  </li>
+</div>
