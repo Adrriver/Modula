@@ -24,7 +24,8 @@ import { SchoolComponent } from './school/school.component';
 
 
   const routes : Routes = [
-  {path: '/', pathMatch: 'full', component: LandingComponent},
+  {path: '', pathMatch: 'full', component: LandingComponent},
+  {path: '', canActivate: [LoggedGuard], children: [
     {path: 'sysadmin', component: SysAdminComponent},
     {path: 'dashboard', component: Dashboard},
     {path: 'student-dashboard', component: StudentDashboardComponent},
@@ -38,13 +39,13 @@ import { SchoolComponent } from './school/school.component';
     {path: 'modDetail/:modId', component: ModuleDetail},
     {path: 'wizard', component: WizardFormCreator},
     {path: 'school', component: SchoolComponent}
-
+]}
     ];
 
 
 
-/*@NgModule({
+@NgModule({
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule]
-})*/
-export const routing = RouterModule.forChild(routes);
+})
+export class RoutingModule {}

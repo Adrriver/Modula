@@ -9,7 +9,6 @@ import { SysAdminComponent } from './app/sys-admin/sys-admin.component';
 import { Students } from './app/StudentsComponent/students.component';
 import { StudentDetail } from './app/StudentDetailComponent/student-detail.component';
 import { StudentService } from './app/StudentService/student.service';
-//import { Teachers } from './app/TeachersComponent/teachers.component';
 import { Dashboard } from './app/dashboard/dashboard.component';
 import { StudentDashboardComponent } from './app/student-dashboard/student-dashboard.component';
 import { Modules } from './app/ModulesComponent/modules.component';
@@ -20,32 +19,51 @@ import { RegistrationComponent } from './app/RegistrationComponent/registration.
 import { SideMenu } from './app/SideMenu/side-menu.component';
 import { HttpModule } from '@angular/http';
 import { WizardFormCreator } from './app/WizardComponent/wizard.component';
-import { routing} from './app/main.routing';
+import { RoutingModule} from './app/main.routing';
 //import {ROUTES} from '@angular/router/components/router_config_loader';
 import { LoggedGuard } from './app/loggedin.guard';
 import { AccountComponent } from './app/account/account.component';
-import { Wizard } from './app/WizardInterface/wizard.interface';
-import { Account } from './app/account/account.interface';
 import { SchoolComponent } from './app/school/school.component';
 import { Validator } from './app/Validator/validator.directive';
 import { LandingComponent } from './app/Landing/landing/landing.component';
-import {ModulaRoutes, routingProviders} from './app.routing';
-import { MainModule } from './app/main.module';
 import { CommonModule } from '@angular/common';
-import {authorizationProviders} from "./app/login.routing";
+
 @NgModule({
   imports: [
-    MainModule,
     FormsModule,
-    routing
+    RoutingModule,
+    BrowserModule,
+    FormsModule,
+    CommonModule,
+    HttpModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    SysAdminComponent,
+    Modules,
+    ModuleDetail,
+    ModulesPerformance,
+    Dashboard,
+    StudentDashboardComponent,
+    Students,
+    StudentDetail,
+    Dashboard,
+    WizardFormCreator,
+    AccountComponent,
+    RegistrationComponent,
+    SideMenu,
+    SchoolComponent
   ],
-  // entryComponents: [AppComponent],
+   entryComponents: [AppComponent],
   providers: [
-    routingProviders,
+    StudentService,
+    MemberService,
+    ModulePerformanceService,
+    SessionService,
+    Validator,
+    LoggedGuard
    ],
 
   bootstrap:	[ AppComponent ]
